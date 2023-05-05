@@ -1,32 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-<meta name="author" content="Zsolt Varjú">
-<meta name="description" content="Simple age calculator used for learning purposes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Zsolt Varjú">
+  <meta name="description" content="Simple age calculator used for learning purposes">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style/style.css">
+  <script src="js/main.js" defer></script>
   <title>Age calculator app</title>
 
 </head>
+
 <body>
 
-  Day
-  DD
+  <main class="main">
 
-  Month
-  MM
+    <!-- Container starts here -->
+    <article class="container">
 
-  Year
-  YYYY
+<!-- Form container starts here -->
+<section class="form__container">
+  <form action="submit" class="inputs" id="inputs">
+    <div class="box">
+      <label for="day">Day</label>
+      <input type="text" name="day" id="day" placeholder="DD">
+      <small class="day-error">Error text</small>
+    </div>
+    <div class="box">
+      <label for="month">Month</label>
+      <input type="text" name="month" id="month" placeholder="MM">
+      <small class="month-error">Error text</small>
+    </div>
+    <div class="box">
+      <label for="year">Year</label>
+      <input type="text" name="year" id="year" placeholder="YYYY">
+      <small class="year-error">Error text</small>
+    </div>
+  </form>
+</section>
+<!-- Form container ends here -->
 
-  -- years
-  -- months
-  -- days
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+<!-- button container starts here -->
+<section class="button__container">
+  <button class="btn btn--calculate" form="inputs">
+    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+      <g fill="none" stroke="#FFF" stroke-width="2">
+        <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+      </g>
+    </svg>
+  </button>
+</section>
+<!-- button container ends here -->
+
+<!-- Result container starts here -->
+<section class="result__container">
+  <p id="result--year"> <span>--</span>years
+  </p>
+
+  <p id="result--month"> <span>--</span>months
+  </p>
+
+  <p id="result--day"> <span>--</span>days
+  </p>
+
+</section>
+<!-- Result container ends here -->
+
+</article>
+<!-- Container ends here -->
+
+      
+
+  </main>
+
 </body>
+
 </html>

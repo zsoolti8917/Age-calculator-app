@@ -1,0 +1,267 @@
+/* || IMPORTS || */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+
+/* || RESET || */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+
+/*
+    3. Allow percentage-based heights in the application
+  */
+html,
+body {
+  height: 100%;
+}
+
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+    8. Avoid text overflows
+  */
+S p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* ||VARIABLES|| */
+:root {
+  /* || COLORS || */
+  --clr-primary-500: hsl(259, 100%, 65%);
+  --clr-primary-400: hsl(0, 100%, 67%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-200: hsl(0, 0%, 94%);
+  --clr-neutral-400: hsl(0, 0%, 86%);
+  --clr-neutral-600: hsl(0, 1%, 44%);
+  --clr-neutral-900: hsl(0, 0%, 8%);
+
+  /* || FONTS || */
+  --ff-primary: 'Poppins', sans-serif;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-extra-bold: 800;
+  --fs-xs: 0.8rem;
+  --fs-lg: 2.5rem;
+  --fs-xss: 0.5rem;
+
+
+}
+
+/* || GLOBAL || */
+body {
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-xs);
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-200);
+  min-height: 100vh;
+}
+
+/* || LAYOUT || */
+.main {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* ||CONTAINER|| */
+.container {
+  background-color: var(--clr-neutral-100);
+  padding: 2rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 800px;
+
+}
+
+.container>section {
+  height: 100%;
+  width: 100%;
+}
+
+/* ||HEADER|| */
+.form__container {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inputs input {
+  max-width: 80px;
+  border: 1px solid var(--clr-neutral-400);
+  border-radius: 5px;
+  padding: 0.5rem;
+
+}
+
+.inputs label {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  color: var(--clr-neutral-600);
+  letter-spacing: 2px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.box small{
+  font-size: var(--fs-xss);
+  color: var(--clr-primary-400);
+  margin-top: 0.3rem;
+  visibility: hidden;
+}
+
+.box.error small{
+  visibility: visible;
+}
+
+.box.error input{
+  border: 1px solid var(--clr-primary-400);
+}
+.box.error label{
+  color: var(--clr-primary-400);
+}
+
+
+/* ||BUTTON|| */
+.button__container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+/* ||LINE BEHIND BUTTON|| */
+.button__container::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: var(--clr-neutral-400);
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+
+.btn {
+  background-color: var(--clr-primary-500);
+  color: var(--clr-neutral-100);
+  padding: 1rem;
+  border-radius: 50%;
+  border: none;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn svg {
+  width: 26px;
+  height: 24px;
+}
+
+.btn:hover {
+  background-color: var(--clr-primary-400);
+  transform: scale(1.1);
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.btn:focus {
+  outline-color: var(--clr-primary-400);
+}
+
+/* ||RESULT|| */
+.result__container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-extra-bold);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.result__container span {
+  color: var(--clr-primary-500);
+  margin-right: 1rem;
+
+}
