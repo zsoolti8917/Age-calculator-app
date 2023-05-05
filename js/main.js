@@ -6,17 +6,6 @@ const day = document.getElementById("day"),
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInputs();
-  /*   const dayValue = day.value,
-    monthValue = month.value,
-    yearValue = year.value;
-    console.log(dayValue);
-checkDay(dayValue);
-checkMonth(monthValue);
-checkYear(yearValue);
-if */
-  /*   if (checkDay(dayValue) && checkMonth(monthValue) && checkYear(yearValue)) {
-calculate(dayValue, monthValue, yearValue);
-  } */
 });
 
 function checkInputs() {
@@ -29,13 +18,16 @@ function checkInputs() {
   checkYear(yearValue);
   const inputDate = new Date(yearValue, monthValue, dayValue);
   const todayDate = new Date();
-  
+  if (inputDate >= todayDate) {
+    setErrorFor(day, "Date cannot be in the future");
+    setErrorFor(month, "Date cannot be in the future");
+    setErrorFor(year, "Date cannot be in the future");
+    return false;
+  }
 
-
-    if (checkDay(dayValue) && checkMonth(monthValue) && checkYear(yearValue)) {
-      calculate(dayValue, monthValue, yearValue);
-    }
-
+  if (checkDay(dayValue) && checkMonth(monthValue) && checkYear(yearValue)) {
+    calculate(dayValue, monthValue, yearValue);
+  }
 }
 
 function checkDay(dayValue) {
@@ -107,15 +99,6 @@ function calculate(dayValue, monthValue, yearValue) {
     } else {
       resultDay = dayDiff;
     }
-    console.log(
-      "You are " +
-        resultYear +
-        " years, " +
-        resultMonth +
-        " months and " +
-        resultDay +
-        " days old."
-    );
 
     setContaienerDate("result--year", resultYear);
     setContaienerDate("result--month", resultMonth);
@@ -130,6 +113,9 @@ function setContaienerDate(target, date) {
   const resultParent = document.getElementById(target);
   const result = resultParent.querySelector("span");
   result.innerText = date;
+  result.classList.add("animate");
+  if (date === "--") return;
+  animateValue(result, 0, date, 1000);
 }
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
@@ -147,7 +133,27 @@ function setSuccessFor(input) {
 }
 
 function isValidDate(year, month, day) {
-    
   var d = new Date(year, month - 1, day);
   return month == d.getMonth() + 1;
+}
+
+const smalls = document.querySelectorAll("span");
+
+smalls.forEach((small) => {
+  small.addEventListener("animationend", () => {
+    small.classList.remove("animate");
+  });
+});
+
+function animateValue(obj, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerHTML = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
 }
