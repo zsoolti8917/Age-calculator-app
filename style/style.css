@@ -123,8 +123,7 @@ body {
   border-top-left-radius: 1rem;
   display: grid;
   gap: 1rem;
-  max-width: 800px;
-
+  width: min(90vw, 500px);
 }
 
 .container>section {
@@ -312,3 +311,20 @@ body {
   animation-name: fade-in;
   animation-timing-function: linear;
 }
+
+/* || MEDIA QUERIES || */
+
+@media screen and (min-width: 768px) {
+
+  .container{
+    gap:unset;
+  }
+  .button__container{
+    justify-content: flex-end;
+  }
+
+  .box{
+    width: 100px;
+  }
+}
+
